@@ -9,6 +9,10 @@ app = Flask(__name__, template_folder='templates')
 # Load the saved diabetes prediction model
 model = joblib.load('diabetes_model.pkl')  # Assuming you saved your model using joblib
 
+@app.route('/result')
+def result():
+    return render_template('result.html')
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
